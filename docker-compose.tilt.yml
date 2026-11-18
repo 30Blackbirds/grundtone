@@ -1,0 +1,17 @@
+# Local dev fragment for the Grundtone docs site, merged into the shared Tilt
+# stack (infra/tilt/Tiltfile builds the image via docker_build()).
+name: klanghaus-local
+
+services:
+  grundtone:
+    image: ghcr.io/klanghaus/grundtone:local
+    build:
+      context: .
+    restart: unless-stopped
+    ports:
+      - "6006:6006"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:6006/"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
