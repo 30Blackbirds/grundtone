@@ -51,7 +51,7 @@
   const themes: Record<ThemeKey, { label: string; theme: Theme }> = {
     light: { label: 'grundtone light', theme: stock.light },
     dark: { label: 'grundtone dark', theme: stock.dark },
-    blog: { label: 'KlangHaus Blog', theme: blog.light },
+    blog: { label: '30 blackbirds Blog', theme: blog.light },
   };
 
   const activeTheme = ref<ThemeKey>('light');
@@ -127,7 +127,7 @@ b.button({ label: 'Buy ticket', href: '{{url}}' });`,
       <template #actions>
         <GTButton
           as="a"
-          href="https://github.com/KlangHaus/grundtone"
+          href="https://github.com/30Blackbirds/grundtone"
           variant="primary"
           size="lg"
         >
@@ -253,9 +253,9 @@ b.button({ label: 'Buy ticket', href: '{{url}}' });`,
             of music is tuned against.
           </p>
           <p class="meaning__origin">
-            grundtone is one of four KlangHaus open-source projects named after
-            Danish music terms, not generic tech words — a deliberate choice,
-            not a coincidence.
+            grundtone is one of four 30 blackbirds open-source projects named
+            after Danish music terms, not generic tech words — a deliberate
+            choice, not a coincidence.
           </p>
         </div>
         <div>
@@ -408,8 +408,8 @@ applyThemeToDOM(theme.{{ activeTheme }});
       <p class="section__eyebrow">In production</p>
       <h2 id="proof-heading">Who uses it?</h2>
       <p class="section__lead">
-        Built and battle-tested in production by KlangHaus — across Backstage,
-        Etude, Studio and transactional email. Not many logos yet.
+        Built and battle-tested in production by 30 blackbirds — across
+        Backstage, Etude, Studio and transactional email. Not many logos yet.
       </p>
       <div class="logostrip">
         <span>Studio</span><span>Etude</span><span>Backstage</span>

@@ -193,7 +193,7 @@ export default defineNuxtModule<ModuleOptions>({
           '  grundtone: {\n' +
           '    theme: createTheme({ light: { primary: "#..." }, dark: { ... } })\n' +
           '  }\n' +
-          'See: https://github.com/KlangHaus/grundtone#theme-configuration',
+          'See: https://github.com/30Blackbirds/grundtone#theme-configuration',
       );
     }
   },
