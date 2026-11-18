@@ -1,6 +1,6 @@
 # @grundtone/react-native
 
-React Native theme provider and hooks for the [Grundtone](https://grundtone.com) design system. Uses
+React Native theme provider and hooks for the [Grundtone](https://grundtone.dev) design system. Uses
 the same semantic tokens as the web packages.
 
 ## Installation
@@ -71,7 +71,7 @@ By default, the provider follows the system color scheme.
 
 ## Documentation
 
-See [grundtone.com](https://grundtone.com) for full API reference.
+See [grundtone.dev](https://grundtone.dev) for full API reference.
 
 ## License
 
