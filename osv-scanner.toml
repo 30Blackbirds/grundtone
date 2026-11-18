@@ -90,31 +90,6 @@ Re-read 2026-11-12T18:44Z by [sikkerhed] (grundtone PR comment 6832731967):
 """
 
 [[IgnoredVulns]]
-id = "GHSA-gcqx-w48m-w2h4"
-ignoreUntil = 2026-11-24T00:00:00Z
-reason = """
-deepmerge prototype poisoning in mergeObject(). NO patch exists: OSV and GitHub
-both give affected >=4.2.0 <=4.3.1 with no fixed version, and 4.3.1 is npm's
-latest, so an override cannot fix it.
-Owner: [grundtone]. Added 2026-11-07 to unblock the npm release gate.
-Approved by Allan 2026-11-07 ("ja, accepter deepmerge til 24. november").
-The published runtime path is gone: @grundtone/email moved to html-to-text
-10.0.1, which uses deepmerge-ts instead (pnpm why --prod per published package:
-0 deepmerge paths in every package except @grundtone/react-native, where it
-comes through its PEER dependency expo, i.e. the consumer's own app).
-Paths that remain (pnpm why -r):
-  - @rollup/plugin-node-resolve, via nuxt/nitropack, unbuild and @sentry/nuxt:
-    build tooling, not shipped.
-  - @expo/config, via expo (apps/playground/expo, and the peer of
-    @grundtone/react-native): not in any package we publish.
-Exit: falls away when (a) deepmerge publishes a fixed version and the lockfile
-moves to it, OR (b) no package in the lockfile depends on deepmerge any more.
-The anti-rot check fails the day OSV stops reporting it. The date is a forced
-re-read, not the exit condition: on 2026-11-24 the remaining paths are tooling
-only, and a renewal needs Allan's word on that reason.
-"""
-
-[[IgnoredVulns]]
 id = "GHSA-fc5q-39xc-vjpf"
 ignoreUntil = 2026-11-24T00:00:00Z
 reason = """
