@@ -27,8 +27,8 @@ not spend an evening on something we will not merge.
 
 **Out of scope**
 
-- Support requests for KlangHaus' own hosted products. This repository is the design system, not
-  those services.
+- Support requests for products built with Grundtone. This repository is the design system, not
+  those products.
 
 ## Before you open a pull request
 
