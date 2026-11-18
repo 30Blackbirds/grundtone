@@ -1,0 +1,9 @@
+**/node_modules
+**/.turbo
+**/dist
+**/.vitepress/cache
+**/.vitepress/dist
+**/.nuxt
+**/.output
+.git
+coverage
