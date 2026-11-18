@@ -10,7 +10,7 @@ A self-hosted design system for Vue 3, Nuxt 3 and React Native.
 [![npm downloads](https://img.shields.io/npm/dm/@grundtone/vue)](https://www.npmjs.com/package/@grundtone/vue)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
-[Documentation](https://grundtone.com) · [npm](https://www.npmjs.com/org/grundtone) ·
+[Documentation](https://grundtone.dev) · [npm](https://www.npmjs.com/org/grundtone) ·
 [Report a bug](https://github.com/30Blackbirds/grundtone/issues/new/choose) ·
 [Contributing](./CONTRIBUTING.md)
 
@@ -197,7 +197,7 @@ export default defineNuxtConfig({
 ```
 
 The full theme shape, token reference and component documentation are on
-[grundtone.com](https://grundtone.com).
+[grundtone.dev](https://grundtone.dev).
 
 ## Packages
 
@@ -320,7 +320,7 @@ report one privately.
 
 ## Links
 
-- Documentation: [grundtone.com](https://grundtone.com)
+- Documentation: [grundtone.dev](https://grundtone.dev)
 - npm: [@grundtone](https://www.npmjs.com/org/grundtone)
 - Issues:
   [github.com/30Blackbirds/grundtone/issues](https://github.com/30Blackbirds/grundtone/issues)
