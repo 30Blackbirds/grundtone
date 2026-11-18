@@ -4,9 +4,8 @@
 
 **Please do not open a public issue for a security problem.**
 
-Report it privately through
-[GitHub Security Advisories](https://github.com/KlangHaus/grundtone/security/advisories/new), or by
-email to **mail@allanasp.dk** with `grundtone security` in the subject.
+Report it privately through GitHub's private vulnerability reporting:
+[open a private report](https://github.com/30Blackbirds/grundtone/security/advisories/new).
 
 Please include, as far as you can:
 
@@ -35,8 +34,8 @@ not patched; upgrading is the route to a fix.
 In scope: the packages published from this repository under `@grundtone/*`, and this repository's
 own build and release tooling.
 
-Out of scope: services operated by KlangHaus that happen to consume these packages. Those are
-reported the same way, but they are not fixed by a release from here.
+Out of scope: third-party services and applications that happen to consume these packages. They are
+not fixed by a release from here.
 
 ## Third-party material
 
