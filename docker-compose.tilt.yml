@@ -9,9 +9,9 @@ services:
       context: .
     restart: unless-stopped
     ports:
-      - "6006:6006"
+      - '6006:6006'
     healthcheck:
-      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:6006/"]
+      test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://127.0.0.1:6006/']
       interval: 10s
       timeout: 3s
       retries: 5
