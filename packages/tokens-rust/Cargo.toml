@@ -4,10 +4,10 @@ version = "0.1.0"
 edition = "2021"
 license = "MIT"
 description = "grundtone design tokens for the native side of Tauri apps — generated from @grundtone/core"
-repository = "https://github.com/KlangHaus/grundtone"
+repository = "https://github.com/30Blackbirds/grundtone"
 # Not published to crates.io yet (separate decision) — consume as a git
 # dependency:
-#   grundtone-tokens = { git = "https://github.com/KlangHaus/grundtone", branch = "develop" }
+#   grundtone-tokens = { git = "https://github.com/30Blackbirds/grundtone", branch = "develop" }
 publish = false
 
 [dependencies]

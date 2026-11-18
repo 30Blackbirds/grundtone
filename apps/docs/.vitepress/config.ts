@@ -103,8 +103,7 @@ const studioTokensUrl = resolveStudioTokensUrl(
 
 export default defineConfig({
   title: 'Grundtone',
-  description:
-    'Design system documentation for Grundtone - part of KlangHaus infrastructure',
+  description: 'Design system documentation for Grundtone - by 30 blackbirds',
 
   ignoreDeadLinks: true,
 
@@ -581,7 +580,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/KlangHaus/grundtone' },
+      { icon: 'github', link: 'https://github.com/30Blackbirds/grundtone' },
     ],
   },
 });

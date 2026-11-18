@@ -32,8 +32,10 @@ when someone represents the project in public.
 
 ## Enforcement
 
-Report unacceptable behaviour to **mail@allanasp.dk**. Reports are handled confidentially, and we
-will acknowledge them within 5 working days.
+Report unacceptable behaviour privately through
+[GitHub's private reporting form](https://github.com/30Blackbirds/grundtone/security/advisories/new),
+choosing a title that starts with "Code of Conduct". Reports are handled confidentially, and we will
+acknowledge them within 5 working days.
 
 Maintainers may remove, edit or reject comments, commits, code and issues that do not follow this
 Code of Conduct, and will say why when they do.
