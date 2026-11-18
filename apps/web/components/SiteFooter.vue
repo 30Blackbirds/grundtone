@@ -33,9 +33,9 @@
         />
       </picture>
       <div class="site-footer__meta">
-        <span>© {{ year }} KlangHaus · MIT license</span>
+        <span>© {{ year }} 30 blackbirds · MIT license</span>
         <span class="site-footer__meta-links">
-          <a href="https://github.com/KlangHaus/grundtone">GitHub</a>
+          <a href="https://github.com/30Blackbirds/grundtone">GitHub</a>
           <a href="https://docs.grundtone.com">Documentation</a>
           <a href="https://www.npmjs.com/package/@grundtone/vue">npm</a>
           <a href="mailto:hello@grundtone.com">hello@grundtone.com</a>
