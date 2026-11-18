@@ -229,3 +229,9 @@ auditConfig:
     # deepmerge-ts); it remains in build tooling and expo. Reason, expiry and
     # exit condition are in osv-scanner.toml.
     - GHSA-gcqx-w48m-w2h4
+    # GHSA-fc5q-39xc-vjpf — picomatch ReDoS through single-branch repeated
+    # extglobs. NO patch exists (affected <=4.0.7, 4.0.7 is npm's latest).
+    # Reachable only through attacker-controlled glob patterns; ours come from
+    # developer config and tooling. Reason, expiry and exit condition are in
+    # osv-scanner.toml.
+    - GHSA-fc5q-39xc-vjpf
