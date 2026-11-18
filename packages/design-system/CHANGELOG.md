@@ -656,8 +656,7 @@
 - [`611ce6e`](https://github.com/grundtone/grundtone/commit/611ce6e80d8588fd3c525061a2bc74e1ff585389)
   Thanks [@allanasp](https://github.com/allanasp)! - Add width utilities (w-auto, w-full, w-25,
   w-50, etc. with responsive variants). Clean up SCSS mixins — remove 14 broken/obsolete mixins,
-  consolidate h1–h6 into heading($level) using
-  $responsive-typography map, switch to CSS custom
+  consolidate h1–h6 into heading($level) using $responsive-typography map, switch to CSS custom
   properties. Fix SCSS functions — correct duration/ease defaults, remove dead code. Add docs for
   width, functions, and mixins.
 
