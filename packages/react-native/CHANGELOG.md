@@ -1,5 +1,25 @@
 # @grundtone/react-native
 
+## 3.0.3 - 2026-11-18
+
+### Patch Changes
+
+- [#351](https://github.com/30Blackbirds/grundtone/pull/351)
+  [`6fe38d5`](https://github.com/30Blackbirds/grundtone/commit/6fe38d5363164102ba61e91ca46aba290c02f29f)
+  Thanks [@allanasp](https://github.com/allanasp)! - Update the documentation links in the package
+  READMEs to the new site URL.
+
+- [#354](https://github.com/30Blackbirds/grundtone/pull/354)
+  [`82b8601`](https://github.com/30Blackbirds/grundtone/commit/82b860153b6ab6f8b2e08fe589d0f8df9eb942c5)
+  Thanks [@allanasp](https://github.com/allanasp)! - Point the repository URLs and the licence
+  copyright line at the new project name.
+- Updated dependencies
+  [[`6fe38d5`](https://github.com/30Blackbirds/grundtone/commit/6fe38d5363164102ba61e91ca46aba290c02f29f),
+  [`82b8601`](https://github.com/30Blackbirds/grundtone/commit/82b860153b6ab6f8b2e08fe589d0f8df9eb942c5)]:
+  - @grundtone/core@3.4.1
+  - @grundtone/utils@3.4.1
+  - @grundtone/icons@3.4.1
+
 ## 3.0.2 - 2026-09-28
 
 ### Patch Changes

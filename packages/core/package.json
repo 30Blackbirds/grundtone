@@ -1,6 +1,6 @@
 {
   "name": "@grundtone/core",
-  "version": "3.3.0",
+  "version": "3.4.1",
   "description": "Core types and utilities for Grundtone",
   "license": "MIT",
   "private": false,

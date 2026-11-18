@@ -1,5 +1,18 @@
 # @grundtone/email
 
+## 0.3.7 - 2026-11-18
+
+### Patch Changes
+
+- [#354](https://github.com/30Blackbirds/grundtone/pull/354)
+  [`82b8601`](https://github.com/30Blackbirds/grundtone/commit/82b860153b6ab6f8b2e08fe589d0f8df9eb942c5)
+  Thanks [@allanasp](https://github.com/allanasp)! - Point the repository URLs and the licence
+  copyright line at the new project name.
+- Updated dependencies
+  [[`6fe38d5`](https://github.com/30Blackbirds/grundtone/commit/6fe38d5363164102ba61e91ca46aba290c02f29f),
+  [`82b8601`](https://github.com/30Blackbirds/grundtone/commit/82b860153b6ab6f8b2e08fe589d0f8df9eb942c5)]:
+  - @grundtone/core@3.4.1
+
 ## 0.3.6 - 2026-11-12
 
 ### Patch Changes
