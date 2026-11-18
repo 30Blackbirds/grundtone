@@ -3,7 +3,7 @@
   "changelog": [
     "@changesets/changelog-github",
     {
-      "repo": "KlangHaus/grundtone"
+      "repo": "30Blackbirds/grundtone"
     }
   ],
   "commit": false,

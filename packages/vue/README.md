@@ -1,6 +1,6 @@
 # @grundtone/vue
 
-Vue 3 component library for the [Grundtone](https://grundtone.com) design system.
+Vue 3 component library for the [Grundtone](https://grundtone.dev) design system.
 
 ## Installation
 
@@ -70,7 +70,7 @@ for automatic component and composable auto-imports.
 
 ## Documentation
 
-See [grundtone.com](https://grundtone.com) for full component API, examples, and design guidelines.
+See [grundtone.dev](https://grundtone.dev) for full component API, examples, and design guidelines.
 
 ## License
 

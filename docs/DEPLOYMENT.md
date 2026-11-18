@@ -526,7 +526,7 @@ authorises the `release.yml` workflow directly via GitHub OIDC.
 1. **No `NPM_TOKEN` secret exists** — do not add one; an empty `NODE_AUTH_TOKEN` makes npm fail with
    a misleading `ENEEDAUTH`
 2. **Per-package config**: each published package needs a trusted-publisher entry on npmjs.com with
-   repository `KlangHaus/grundtone`, workflow `release.yml` and environment `npmjs-publish` — and
+   repository `30Blackbirds/grundtone`, workflow `release.yml` and environment `npmjs-publish` — and
    note that a package's FIRST publish cannot use OIDC (bootstrap with a granular token once)
 3. **Provenance**: publishes run with `--provenance` where enabled
 
