@@ -35,7 +35,7 @@
         <a href="https://docs.grundtone.com/vue/installation.html"
           >Components</a
         >
-        <a href="https://github.com/KlangHaus/grundtone">GitHub</a>
+        <a href="https://github.com/30Blackbirds/grundtone">GitHub</a>
       </div>
 
       <div class="site-header__cta">
