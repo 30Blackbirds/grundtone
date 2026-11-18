@@ -113,3 +113,22 @@ The anti-rot check fails the day OSV stops reporting it. The date is a forced
 re-read, not the exit condition: on 2026-11-24 the remaining paths are tooling
 only, and a renewal needs Allan's word on that reason.
 """
+
+[[IgnoredVulns]]
+id = "GHSA-fc5q-39xc-vjpf"
+ignoreUntil = 2026-11-24T00:00:00Z
+reason = """
+picomatch ReDoS on single-branch repeated extglobs (CVE-2026-112366; affected
+<=4.0.7, no fixed version; 4.0.7 is npm's latest, so an override cannot fix it).
+Reported against picomatch 4.0.5 and 4.0.7 in pnpm-lock.yaml.
+Reachable only if an attacker controls a glob PATTERN such as +(*). Here the
+patterns come from developer-written config and tooling (tinyglobby, fdir,
+unplugin, vite, @parcel/watcher, @changesets/cli) rather than from end users.
+Paths: build and dev tooling, plus @nuxt/kit and Expo tooling in the
+peer-dependency closure of @grundtone/nuxt and @grundtone/react-native, i.e. the
+consumer's own app. None of the other published packages has a path.
+Owner: [grundtone]. Added 2026-11-18, approved by Allan in chat 2026-11-18
+("Yes, add the accept until 2026-11-24"). A renewal needs Allan's word.
+Exit: falls away when picomatch publishes a fixed version and the lockfile
+resolves to it (the anti-rot check fails the day OSV stops reporting it).
+"""
