@@ -223,15 +223,15 @@ auditConfig:
     # here only because the two accept lists must match. Reason, expiry and exit
     # condition are in osv-scanner.toml.
     - GHSA-vjh5-4x84-xrqp
-    # GHSA-gcqx-w48m-w2h4 — deepmerge prototype poisoning. NO patch exists
-    # (affected >=4.2.0 <=4.3.1, no patched version; 4.3.1 is npm's latest).
-    # No published package depends on it any more (html-to-text 10 uses
-    # deepmerge-ts); it remains in build tooling and expo. Reason, expiry and
-    # exit condition are in osv-scanner.toml.
-    - GHSA-gcqx-w48m-w2h4
     # GHSA-fc5q-39xc-vjpf — picomatch ReDoS through single-branch repeated
     # extglobs. NO patch exists (affected <=4.0.7, 4.0.7 is npm's latest).
     # Reachable only through attacker-controlled glob patterns; ours come from
     # developer config and tooling. Reason, expiry and exit condition are in
     # osv-scanner.toml.
     - GHSA-fc5q-39xc-vjpf
+    # GHSA-f3x9-2chm-73c8 — OSV false positive on nuxt 4.6.4 (see osv-scanner.toml; ClickUp 1amk32fp42e).
+    - GHSA-f3x9-2chm-73c8
+    # GHSA-hf59-9xwc-2g4p — OSV false positive on nuxt 4.6.4 (see osv-scanner.toml; ClickUp 1amk32fp42e).
+    - GHSA-hf59-9xwc-2g4p
+    # GHSA-96x6-fvhx-49hg — OSV false positive on nuxt 4.6.4 (see osv-scanner.toml; ClickUp 1amk32fp42e).
+    - GHSA-96x6-fvhx-49hg
