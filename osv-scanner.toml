@@ -90,31 +90,6 @@ Re-read 2026-11-12T18:44Z by [sikkerhed] (grundtone PR comment 6832731967):
 """
 
 [[IgnoredVulns]]
-id = "GHSA-gcqx-w48m-w2h4"
-ignoreUntil = 2026-11-24T00:00:00Z
-reason = """
-deepmerge prototype poisoning in mergeObject(). NO patch exists: OSV and GitHub
-both give affected >=4.2.0 <=4.3.1 with no fixed version, and 4.3.1 is npm's
-latest, so an override cannot fix it.
-Owner: [grundtone]. Added 2026-11-07 to unblock the npm release gate.
-Approved by Allan 2026-11-07 ("ja, accepter deepmerge til 24. november").
-The published runtime path is gone: @grundtone/email moved to html-to-text
-10.0.1, which uses deepmerge-ts instead (pnpm why --prod per published package:
-0 deepmerge paths in every package except @grundtone/react-native, where it
-comes through its PEER dependency expo, i.e. the consumer's own app).
-Paths that remain (pnpm why -r):
-  - @rollup/plugin-node-resolve, via nuxt/nitropack, unbuild and @sentry/nuxt:
-    build tooling, not shipped.
-  - @expo/config, via expo (apps/playground/expo, and the peer of
-    @grundtone/react-native): not in any package we publish.
-Exit: falls away when (a) deepmerge publishes a fixed version and the lockfile
-moves to it, OR (b) no package in the lockfile depends on deepmerge any more.
-The anti-rot check fails the day OSV stops reporting it. The date is a forced
-re-read, not the exit condition: on 2026-11-24 the remaining paths are tooling
-only, and a renewal needs Allan's word on that reason.
-"""
-
-[[IgnoredVulns]]
 id = "GHSA-fc5q-39xc-vjpf"
 ignoreUntil = 2026-11-24T00:00:00Z
 reason = """
@@ -128,7 +103,59 @@ Paths: build and dev tooling, plus @nuxt/kit and Expo tooling in the
 peer-dependency closure of @grundtone/nuxt and @grundtone/react-native, i.e. the
 consumer's own app. None of the other published packages has a path.
 Owner: [grundtone]. Added 2026-11-18, approved by Allan in chat 2026-11-18
-("Yes, add the accept until 2026-11-24"). A renewal needs Allan's word.
+("Yes, add the accept until 2026-11-24"). ClickUp 1amk32fp42e.
+A renewal needs Allan's word.
 Exit: falls away when picomatch publishes a fixed version and the lockfile
 resolves to it (the anti-rot check fails the day OSV stops reporting it).
+"""
+
+[[IgnoredVulns]]
+id = "GHSA-f3x9-2chm-73c8"
+ignoreUntil = 2026-11-24T00:00:00Z
+reason = """
+FALSE POSITIVE in OSV's data, same mechanism as GHSA-vjh5-4x84-xrqp. Nuxt: incomplete fix for GHSA-6gq8-jgmh-3ffp (encoded slash handling).
+GitHub's advisory (which `pnpm audit` reads) bounds the affected 4.x ranges
+(nuxt >= 4.0.0 < 4.6.4, @nuxt/nitro-server >= 4.2.0 < 4.6.4, @nuxt/vite-server >= 4.6.0 < 4.6.4) with 4.6.4 patched. OSV's record carries the legacy 3.x ranges as
+`introduced` with no upper bound, so it flags nuxt / @nuxt/nitro-server 4.6.4,
+which is npm's latest and already the patched release. The lockfile holds no
+nuxt 3.x, so there is nothing to bump to.
+Owner: [grundtone]. Added 2026-11-18, approved by Allan in chat 2026-11-18
+("Ja, accepter dem"). ClickUp 1amk32fp42e. A renewal needs Allan's word.
+Exit: falls away when OSV bounds the 3.x range. Check:
+  curl -s https://api.osv.dev/v1/vulns/GHSA-f3x9-2chm-73c8
+The anti-rot check fails the day OSV stops reporting it.
+"""
+
+[[IgnoredVulns]]
+id = "GHSA-hf59-9xwc-2g4p"
+ignoreUntil = 2026-11-24T00:00:00Z
+reason = """
+FALSE POSITIVE in OSV's data, same mechanism as GHSA-vjh5-4x84-xrqp. Nuxt: colliding island props can share one /__nuxt_island path.
+GitHub's advisory (which `pnpm audit` reads) bounds the affected 4.x ranges
+(nuxt and @nuxt/nitro-server >= 4.4.6 < 4.6.4) with 4.6.4 patched. OSV's record carries the legacy 3.x ranges as
+`introduced` with no upper bound, so it flags nuxt / @nuxt/nitro-server 4.6.4,
+which is npm's latest and already the patched release. The lockfile holds no
+nuxt 3.x, so there is nothing to bump to.
+Owner: [grundtone]. Added 2026-11-18, approved by Allan in chat 2026-11-18
+("Ja, accepter dem"). ClickUp 1amk32fp42e. A renewal needs Allan's word.
+Exit: falls away when OSV bounds the 3.x range. Check:
+  curl -s https://api.osv.dev/v1/vulns/GHSA-hf59-9xwc-2g4p
+The anti-rot check fails the day OSV stops reporting it.
+"""
+
+[[IgnoredVulns]]
+id = "GHSA-96x6-fvhx-49hg"
+ignoreUntil = 2026-11-24T00:00:00Z
+reason = """
+FALSE POSITIVE in OSV's data, same mechanism as GHSA-vjh5-4x84-xrqp. Nuxt: message and data of unhandled errors exposed during server rendering.
+GitHub's advisory (which `pnpm audit` reads) bounds the affected 4.x ranges
+(nuxt >= 4.0.0 < 4.6.4) with 4.6.4 patched. OSV's record carries the legacy 3.x ranges as
+`introduced` with no upper bound, so it flags nuxt / @nuxt/nitro-server 4.6.4,
+which is npm's latest and already the patched release. The lockfile holds no
+nuxt 3.x, so there is nothing to bump to.
+Owner: [grundtone]. Added 2026-11-18, approved by Allan in chat 2026-11-18
+("Ja, accepter dem"). ClickUp 1amk32fp42e. A renewal needs Allan's word.
+Exit: falls away when OSV bounds the 3.x range. Check:
+  curl -s https://api.osv.dev/v1/vulns/GHSA-96x6-fvhx-49hg
+The anti-rot check fails the day OSV stops reporting it.
 """
