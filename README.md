@@ -1,47 +1,89 @@
+<div align="center">
+
 # Grundtone
 
-A design token-driven design system for Vue 3, Nuxt 3, and React Native. Self-hosted, open source,
-and built for teams that need full control over their UI foundation.
+**Open source design tokens for multi-brand theming — update once, apply everywhere.**\
+A self-hosted design system for Vue 3, Nuxt 3 and React Native.
 
-[![npm version](https://img.shields.io/npm/v/@grundtone/core?label=%40grundtone%2Fcore&color=1a1a1a)](https://www.npmjs.com/package/@grundtone/core)
-[![license](https://img.shields.io/npm/l/@grundtone/core?color=1a1a1a)](./LICENSE)
+[![CI](https://github.com/30Blackbirds/grundtone/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/30Blackbirds/grundtone/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/@grundtone/vue?label=%40grundtone%2Fvue)](https://www.npmjs.com/package/@grundtone/vue)
+[![npm downloads](https://img.shields.io/npm/dm/@grundtone/vue)](https://www.npmjs.com/package/@grundtone/vue)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
-**[Documentation](https://grundtone.com)** | **[npm](https://www.npmjs.com/org/grundtone)**
+[Documentation](https://grundtone.com) · [npm](https://www.npmjs.com/org/grundtone) ·
+[Report a bug](https://github.com/30Blackbirds/grundtone/issues/new/choose) ·
+[Contributing](./CONTRIBUTING.md)
+
+</div>
 
 ---
 
-## Packages
+## Features
 
-| Package                                                | Description                                                    |
-| ------------------------------------------------------ | -------------------------------------------------------------- |
-| [`@grundtone/core`](./packages/core)                   | Theme system, config, types, branding, icon registry           |
-| [`@grundtone/design-system`](./packages/design-system) | SCSS tokens, utilities, components, CSS + vanilla JS behaviors |
-| [`@grundtone/utils`](./packages/utils)                 | Validation, formatting, ID generation                          |
-| [`@grundtone/icons`](./packages/icons)                 | SVG icon registry (auto-generated)                             |
-| [`@grundtone/vue`](./packages/vue)                     | Vue 3 component library (17 components, 5 composables)         |
-| [`@grundtone/nuxt`](./packages/nuxt)                   | Nuxt 3 module with auto-imports                                |
-| [`@grundtone/react-native`](./packages/react-native)   | React Native theme provider and hooks                          |
-| [`@grundtone/mcp`](./packages/mcp)                     | MCP server exposing components and tokens to AI tools          |
-| [`@grundtone/email`](./packages/email)                 | Email templates and MJML build                                 |
+- **Token-driven theming** — one theme object drives colours, spacing, typography and more, with
+  light and dark modes.
+- **Vue 3 components** — accessible atoms and molecules (`GTButton`, inputs, selects, tooltips, …)
+  plus composables such as `useTheme`.
+- **Nuxt 3 module** — components and composables are auto-imported.
+- **React Native** — a theme provider and hooks built on the same `@grundtone/core` themes.
+- **SCSS and CSS layer** — token functions, mixins and utilities for any web framework, or plain
+  HTML.
+- **AI tooling** — an MCP server that exposes components and tokens to AI assistants.
+- **Self-hosted** — MIT licensed, no hosted service required.
 
-> **The version numbers are not synchronised, and are not meant to be.** Each package is versioned
-> by what changed in it, so a bump means something happened there. The packages are still pinned to
-> each other: a published `@grundtone/vue` names the exact `@grundtone/core` and
-> `@grundtone/design-system` it was built against, so installing one version resolves the rest
-> unambiguously. Matching numbers would add nothing that the pins do not already guarantee — and
-> would cost the meaning of a bump.
+## Table of contents
 
-### Apps
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Quick start](#quick-start)
+- [Configuration and theming](#configuration-and-theming)
+- [Packages](#packages)
+- [Architecture](#architecture)
+- [Development](#development)
+- [Contributing](#contributing)
+- [Security](#security)
+- [License](#license)
+- [Links](#links)
 
-| App                                                        | Description                               |
-| ---------------------------------------------------------- | ----------------------------------------- |
-| [`apps/docs`](./apps/docs)                                 | VitePress documentation site              |
-| [`apps/playground/vue`](./apps/playground/vue)             | Vue 3 playground (blog, shop, components) |
-| [`apps/playground/nuxt`](./apps/playground/nuxt)           | Nuxt 3 playground                         |
-| [`apps/playground/html-test`](./apps/playground/html-test) | Plain HTML playground (no framework)      |
-| [`apps/playground/expo`](./apps/playground/expo)           | React Native / Expo playground            |
+## Prerequisites
 
-All packages are versioned together and published to npm under the `@grundtone` scope.
+| Use case                       | Requirement                                                        |
+| ------------------------------ | ------------------------------------------------------------------ |
+| Using the packages in your app | A project on a supported framework (see the quick starts below)    |
+| Developing in this repository  | Node.js `>= 24.15.0` (see [`.nvmrc`](./.nvmrc)) and pnpm `10.14.0` |
+
+Peer requirements of the published packages: `@grundtone/vue` needs Vue `^3.5.13`; `@grundtone/nuxt`
+supports Nuxt `>=3.0.0`; `@grundtone/react-native` needs React `>=18`, React Native `>=0.72`, Expo
+`>=52` and `react-native-svg >=13`.
+
+## Installation
+
+### From npm
+
+All packages are published under the [`@grundtone`](https://www.npmjs.com/org/grundtone) scope.
+Install the ones you need — see the [quick starts](#quick-start) for the right combination per
+framework:
+
+```bash
+npm install @grundtone/vue @grundtone/design-system
+```
+
+pnpm and yarn work the same way (`pnpm add …`, `yarn add …`).
+
+### Self-hosted (from source)
+
+Build the packages yourself, for example to run a fork or to try unreleased changes:
+
+```bash
+git clone https://github.com/30Blackbirds/grundtone.git
+cd grundtone
+corepack enable          # activates the pinned pnpm version
+pnpm install
+pnpm build:packages      # builds everything under packages/*
+```
+
+The built packages are in `packages/*/dist`. To use them in another project, either publish them to
+your own registry or link them locally (for example with `pnpm link` or a `file:` dependency).
 
 ## Quick start
 
@@ -49,6 +91,11 @@ All packages are versioned together and published to npm under the `@grundtone` 
 
 ```bash
 npm install @grundtone/vue @grundtone/design-system
+```
+
+```ts
+// main.ts
+import '@grundtone/vue/css';
 ```
 
 ```vue
@@ -74,7 +121,8 @@ export default defineNuxtConfig({
 });
 ```
 
-Components and composables are auto-imported.
+Components and composables are auto-imported, the stylesheet and self-hosted fonts are registered
+for you, and the SCSS `tokens` namespace is available in your own styles.
 
 ### Design tokens (any framework)
 
@@ -91,6 +139,9 @@ npm install @grundtone/design-system
   box-shadow: tokens.shadow('medium');
 }
 ```
+
+Prefer plain CSS? The compiled stylesheet is exported as `@grundtone/design-system/css`, and the web
+fonts as `@grundtone/design-system/fonts.css`.
 
 ### React Native
 
@@ -113,26 +164,99 @@ export default function App() {
 }
 ```
 
+## Configuration and theming
+
+Themes are created with `createTheme()` from `@grundtone/core`, which accepts overrides per colour
+mode and returns a `{ light, dark }` pair.
+
+```ts
+import { createTheme } from '@grundtone/core';
+
+const theme = createTheme({
+  light: { colors: { primary: '#your-brand' } },
+});
+```
+
+- **Vue** — pass the theme to the `GrundtoneThemeProvider` component, and read or switch the mode
+  with the `useTheme` composable.
+- **Nuxt** — set it under the `grundtone` key in `nuxt.config.ts`. Other options: `components`
+  (auto-import components, default `true`), `composables` (default `true`) and `prefix` (component
+  prefix, default `GT`).
+- **React Native** — pass `light` and `dark` to `GrundtoneThemeProvider`, as shown above.
+
+```ts
+// nuxt.config.ts
+import { createTheme } from '@grundtone/core';
+
+export default defineNuxtConfig({
+  modules: ['@grundtone/nuxt'],
+  grundtone: {
+    theme: createTheme({ light: { colors: { primary: '#your-brand' } } }),
+  },
+});
+```
+
+The full theme shape, token reference and component documentation are on
+[grundtone.com](https://grundtone.com).
+
+## Packages
+
+All packages are published to npm under the `@grundtone` scope.
+
+| Package                                                | Description                                                    |
+| ------------------------------------------------------ | -------------------------------------------------------------- |
+| [`@grundtone/core`](./packages/core)                   | Theme system, config, types, branding, icon registry           |
+| [`@grundtone/design-system`](./packages/design-system) | SCSS tokens, utilities, components, CSS + vanilla JS behaviors |
+| [`@grundtone/utils`](./packages/utils)                 | Validation, formatting, ID generation                          |
+| [`@grundtone/icons`](./packages/icons)                 | SVG icon registry (auto-generated)                             |
+| [`@grundtone/vue`](./packages/vue)                     | Vue 3 component library and composables                        |
+| [`@grundtone/nuxt`](./packages/nuxt)                   | Nuxt 3 module with auto-imports                                |
+| [`@grundtone/react-native`](./packages/react-native)   | React Native theme provider and hooks                          |
+| [`@grundtone/mcp`](./packages/mcp)                     | MCP server exposing components and tokens to AI tools          |
+| [`@grundtone/email`](./packages/email)                 | Token-themed email building blocks, compiled to inlined HTML   |
+
+The repository also contains [`packages/tokens-rust`](./packages/tokens-rust), a Rust crate with the
+design tokens for native code. It is not published to crates.io.
+
+> **Version numbers are not synchronised, and are not meant to be.** Each package is versioned by
+> what changed in it, so a bump means something happened there. The packages are still pinned to
+> each other: a published `@grundtone/vue` names the exact `@grundtone/core` and
+> `@grundtone/design-system` it was built against, so installing one version resolves the rest
+> unambiguously.
+
+### Apps
+
+| App                                                        | Description                               |
+| ---------------------------------------------------------- | ----------------------------------------- |
+| [`apps/docs`](./apps/docs)                                 | VitePress documentation site              |
+| [`apps/playground/vue`](./apps/playground/vue)             | Vue 3 playground (blog, shop, components) |
+| [`apps/playground/nuxt`](./apps/playground/nuxt)           | Nuxt 3 playground                         |
+| [`apps/playground/html-test`](./apps/playground/html-test) | Plain HTML playground (no framework)      |
+| [`apps/playground/expo`](./apps/playground/expo)           | React Native / Expo playground            |
+
 ## Architecture
 
 ```
 core                 Theme types, createTheme(), presets
  ├── design-system   SCSS/CSS layer for web
- ├── shared          Formatting & validation utilities
+ ├── utils           Formatting & validation utilities
+ ├── icons           SVG icon registry
  ├── react-native    RN theme provider & hooks
- ├── composables     Vue 3 composition hooks
- ├── vue             Vue 3 components
+ ├── vue             Vue 3 components & composables
  └── nuxt            Nuxt 3 module (auto-imports vue + composables)
 ```
 
+More detail in [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md).
+
 ## Development
 
-Requires Node.js >= 24 and pnpm 10.
+Requires Node.js `>= 24.15.0` and pnpm `10.14.0` (pinned in `package.json`; `corepack enable` is the
+easiest route).
 
 ```bash
 pnpm install
-pnpm build           # Build all packages + apps
-pnpm test            # Run all tests
+pnpm build           # build all packages and apps
+pnpm test            # run all tests
 ```
 
 ### Root commands
@@ -147,81 +271,57 @@ pnpm test            # Run all tests
 | `pnpm test:coverage`  | Run tests with coverage           |
 | `pnpm lint`           | Lint all packages                 |
 | `pnpm typecheck`      | TypeScript type checking          |
-| `pnpm format`         | Format all files with Prettier    |
-| `pnpm clean`          | Remove dist, node_modules, .turbo |
+| `pnpm lint:format`    | Check formatting with Prettier    |
+| `pnpm clean`          | Remove build output via turbo     |
+| `pnpm docs:dev`       | Start the docs dev server         |
+| `pnpm docs:build`     | Build the docs for production     |
+| `pnpm docs:preview`   | Preview the docs build            |
 
 ### Per-package commands
 
 ```bash
-# Build a specific package
 pnpm --filter @grundtone/vue build
-pnpm --filter @grundtone/design-system build
-pnpm --filter @grundtone/utils build
-pnpm --filter @grundtone/core build
-pnpm --filter @grundtone/icons build
-pnpm --filter @grundtone/nuxt build
-pnpm --filter @grundtone/react-native build
-
-# Run tests
-pnpm --filter @grundtone/vue test        # Vue component tests (Vitest)
-pnpm --filter @grundtone/utils test      # Validator/utility tests
-pnpm --filter @grundtone/nuxt test       # Nuxt module tests
-
-# Watch mode
+pnpm --filter @grundtone/vue test
 pnpm --filter @grundtone/vue dev
-pnpm --filter @grundtone/design-system dev
 
-# Generate
-pnpm --filter @grundtone/icons generate:icons           # Regenerate icon registry
-pnpm --filter @grundtone/design-system generate:tokens   # Regenerate SCSS token defaults
+pnpm --filter @grundtone/icons generate:icons            # regenerate the icon registry
+pnpm --filter @grundtone/design-system generate:tokens   # regenerate SCSS token defaults
 ```
-
-### Docs
-
-| Command             | Description               |
-| ------------------- | ------------------------- |
-| `pnpm docs:dev`     | Start docs dev server     |
-| `pnpm docs:build`   | Build docs for production |
-| `pnpm docs:preview` | Preview docs build        |
 
 ### Playground apps
 
 ```bash
-# Vue playground (Vite SPA — blog, shop, component demos)
-pnpm --filter @grundtone/vue-playground dev
-
-# Nuxt playground (auto-imported components)
-pnpm --filter @grundtone/nuxt-playground dev
-
-# HTML playground (plain HTML + CSS, no framework)
-pnpm --filter @grundtone/html-test dev
-
-# Expo playground (React Native)
-pnpm --filter @grundtone/expo-playground dev
+pnpm --filter @grundtone/vue-playground dev      # Vue SPA (blog, shop, component demos)
+pnpm --filter @grundtone/nuxt-playground dev     # Nuxt
+pnpm --filter @grundtone/html-test dev           # plain HTML + CSS
+pnpm --filter @grundtone/expo-playground dev     # React Native / Expo
 ```
 
-### Changesets & release
+### Changesets and releases
 
-| Command                 | Description                     |
-| ----------------------- | ------------------------------- |
-| `pnpm changeset`        | Create a new changeset          |
-| `pnpm changeset:status` | View pending changesets         |
-| `pnpm version-packages` | Apply changesets, bump versions |
-| `pnpm release`          | Build + publish to npm          |
-| `pnpm release:snapshot` | Publish snapshot release        |
+Versioning uses [Changesets](https://github.com/changesets/changesets). Add one with
+`pnpm changeset` for any change that affects a published package. Maintainers release with
+`pnpm release`; see [`docs/CHANGESETS.md`](./docs/CHANGESETS.md).
 
 ## Contributing
 
-```bash
-git clone https://github.com/KlangHaus/grundtone.git
-cd grundtone
-pnpm install
-pnpm build:packages
-pnpm --filter @grundtone/vue-playground dev
-```
+Contributions are welcome — bug reports and accessibility findings especially. Please read
+[CONTRIBUTING.md](./CONTRIBUTING.md) first, and note that participation is covered by the
+[Code of Conduct](./CODE_OF_CONDUCT.md).
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
+## Security
+
+Please do not open a public issue for a vulnerability. See [SECURITY.md](./SECURITY.md) for how to
+report one privately.
 
 ## License
 
-MIT
+[MIT](./LICENSE)
+
+## Links
+
+- Documentation: [grundtone.com](https://grundtone.com)
+- npm: [@grundtone](https://www.npmjs.com/org/grundtone)
+- Issues:
+  [github.com/30Blackbirds/grundtone/issues](https://github.com/30Blackbirds/grundtone/issues)
+- Changelogs: in each package's `CHANGELOG.md`

@@ -1,8 +1,5 @@
 blank_issues_enabled: false
 contact_links:
-  - name: 💬 Discussions
-    url: https://github.com/KlangHaus/grundtone/discussions
-    about: Ask questions and discuss ideas with the community
   - name: 📖 Documentation
-    url: https://grundtone.dev
+    url: https://grundtone.com
     about: Check our documentation for guides and examples
