@@ -57,7 +57,7 @@ import {
 } from './lib/environment-gates.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const REPO = process.env.GITHUB_REPOSITORY ?? 'KlangHaus/grundtone';
+const REPO = process.env.GITHUB_REPOSITORY ?? '30Blackbirds/grundtone';
 
 // Erklaeringen bor i en REPO-LOKAL fil, ikke i dette script: saa kan scriptet
 // deles paa tvaers af repos uden at baere andres undtagelser med sig, og en

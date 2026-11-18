@@ -68,7 +68,7 @@ typed Rust constants.
 [dependencies]
 # add `features = ["serde"]` if you use RuntimeColors (runtime brands below);
 # pin `rev = "..."` instead of `branch` for reproducible builds
-grundtone-tokens = { git = "https://github.com/KlangHaus/grundtone", branch = "develop" }
+grundtone-tokens = { git = "https://github.com/30Blackbirds/grundtone", branch = "develop" }
 ```
 
 ### Kill the white flash

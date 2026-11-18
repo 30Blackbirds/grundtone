@@ -1,6 +1,6 @@
 # @grundtone/core
 
-Foundation package for the [Grundtone](https://grundtone.com) design system. Provides the theme
+Foundation package for the [Grundtone](https://grundtone.dev) design system. Provides the theme
 system, TypeScript types, and presets that all other packages build on.
 
 ## Installation
@@ -52,7 +52,7 @@ const { light, dark } = createTheme({
 
 ## Documentation
 
-See [grundtone.com](https://grundtone.com) for full documentation.
+See [grundtone.dev](https://grundtone.dev) for full documentation.
 
 ## License
 
