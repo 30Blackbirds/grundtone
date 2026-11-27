@@ -27,6 +27,7 @@ jobs:
   crate:
     name: cargo build + test + lint
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     defaults:
       run:
         working-directory: packages/tokens-rust
@@ -54,6 +55,7 @@ jobs:
   codegen-drift:
     name: generated.rs matches @grundtone/core
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 

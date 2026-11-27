@@ -11,9 +11,9 @@ name: OSV-Scanner
 
 on:
   pull_request:
-    branches: [main, develop]
+    branches: [develop]
   push:
-    branches: [main, develop]
+    branches: [develop]
   schedule:
     - cron: '17 4 * * 1'
 
@@ -62,6 +62,7 @@ jobs:
   scan:
     name: Dependency vuln-scan
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 

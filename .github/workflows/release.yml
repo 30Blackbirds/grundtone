@@ -23,6 +23,7 @@ jobs:
   docs:
     name: Deploy docs
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     # Branch policy `develop` on this environment is what keeps the docs storage
     # key away from any other ref.
     environment: docs-deploy
@@ -66,6 +67,7 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     # The npm trusted publisher for each package names this environment, so an
     # OIDC token minted on any other ref, or in any other job, cannot publish.
     environment: npmjs-publish
@@ -221,6 +223,7 @@ jobs:
       needs.release.outputs.published == 'true' &&
       contains(fromJSON(needs.release.outputs.publishedPackages).*.name, '@grundtone/email')
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     # Branch policy `develop` on this environment keeps the email storage key
     # away from any other ref, and from the npm publish job.
     environment: email-deploy

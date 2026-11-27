@@ -2,7 +2,7 @@ name: CI
 
 on:
   pull_request:
-    branches: [main, develop]
+    branches: [develop]
 
 # Read-only by default; the one job that writes says so itself.
 permissions:
@@ -16,6 +16,7 @@ jobs:
   validate-pr:
     name: Validate PR
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     if: github.event_name == 'pull_request'
 
     steps:
@@ -49,6 +50,7 @@ jobs:
   setup:
     name: Setup & Build
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - name: Checkout
@@ -145,6 +147,7 @@ jobs:
   lint:
     name: Lint & Typecheck
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     needs: [setup]
 
     steps:
@@ -346,6 +349,7 @@ jobs:
   size-check:
     name: Bundle Size Check
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     needs: [setup]
     permissions:
       contents: read
@@ -403,6 +407,7 @@ jobs:
   version-drift:
     name: Version drift (develop ahead of npm latest)
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     # KUN på develop-PR'er. På main ER de udgivne versioner `latest` — main
     # er dét, npm har fået — så "strengt højere" er per definition falsk dér,
     # og gaten ville gøre enhver main-PR rød uden at der var noget galt.
@@ -437,6 +442,7 @@ jobs:
   pack-smoke:
     name: Artefakt-bevis (pack + install-smoke)
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     needs: [setup]
     steps:
       - name: Checkout
@@ -463,6 +469,7 @@ jobs:
   security:
     name: Security Audit
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
       - name: Checkout
