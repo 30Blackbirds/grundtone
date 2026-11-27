@@ -61,7 +61,7 @@
     "filesize": "^11.0.32",
     "husky": "^9.1.7",
     "jsdom": "31.0.1",
-    "lint-staged": "^15.5.2",
+    "lint-staged": "^17.6.2",
     "playwright": "^1.65.1",
     "postcss-html": "^2.0.0",
     "postcss-scss": "^4.0.9",
