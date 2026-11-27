@@ -22,29 +22,33 @@
 
 [[IgnoredVulns]]
 id = "GHSA-5p2g-fcmc-qvqq"
-ignoreUntil = 2026-11-24T00:00:00Z
+ignoreUntil = 2026-12-30T00:00:00Z
 reason = """
-image-size DoS i ICNS-parseren. INGEN patch findes: advisory'et angiver
-`Patched versions <0.0.0`, og npms nyeste (2.0.2) er selv sårbar — en override
-er derfor ikke mulig. Nåbar udelukkende via apps/playground/expo -> expo ->
-@expo/metro -> metro: et playground, der aldrig shippes, og som parser billeder,
-vi selv lægger ind. Datoen er en tvungen genvurdering, ikke exit-betingelsen:
-accepten falder bort, når (a) image-size udgiver en patch, ELLER (b)
-expo-playgroundet fjernes — produkt-taksonomien siger NativeScript, ikke Expo.
+image-size DoS in the ICNS parser. A fix exists in the 2.x line
+(>= 2.0.3). The lockfile holds image-size 1.2.1, and the 1.x line will not be
+patched; moving to 2.x is a major-version change with API changes for its
+consumer. Reachable only through apps/playground/expo -> expo -> @expo/metro
+-> metro: a playground that is never shipped and only parses images committed
+to this repository. The date is a forced re-check, not the exit condition: the
+accept falls away when (a) metro moves to image-size >= 2.0.3 (or 1.x gets a
+patch), OR (b) the expo playground is removed.
+Re-checked 2026-11-27: OSV and GitHub both list 2.0.3 as fixed; lockfile still
+image-size 1.2.1 only via metro. Renewed 30 days, to 2026-12-30.
 """
 
 [[IgnoredVulns]]
 id = "GHSA-w3rx-r6r6-pgpr"
-ignoreUntil = 2026-11-24T00:00:00Z
+ignoreUntil = 2026-12-30T00:00:00Z
 reason = """
-Samme pakke og samme nåbarhed som GHSA-5p2g-fcmc-qvqq, men JXL/HEIF-parseren.
-Ingen patch, ingen override mulig, kun nåbar via expo-playgroundet. Samme
-exit-betingelse.
+Same package and same reachability as GHSA-5p2g-fcmc-qvqq, but the JXL/HEIF
+parser. Fixed in 2.x (>= 2.0.3), not on the 1.x line the lockfile holds; only
+reachable through the expo playground. Same exit condition.
+Re-checked 2026-11-27: unchanged. Renewed 30 days, to 2026-12-30.
 """
 
 [[IgnoredVulns]]
 id = "GHSA-vjh5-4x84-xrqp"
-ignoreUntil = 2026-11-24T00:00:00Z
+ignoreUntil = 2026-12-30T00:00:00Z
 reason = """
 FALSE POSITIVE in OSV's data, not in the code. Nuxt server-side route rules.
 GitHub's advisory bounds all four ranges: nuxt >= 4.0.0, < 4.6.2 (patched 4.6.2)
@@ -87,11 +91,14 @@ Re-read 2026-11-12T18:44Z by [sikkerhed] (grundtone PR comment 6832731967):
     4.6.2 patched — unchanged, not withdrawn.
   - Lockfile: only nuxt@4.6.4 and @nuxt/nitro-server@4.6.4, no 3.x entries;
     the same false positive on the newer patch release.
+Re-checked 2026-11-27: OSV record unchanged (modified 2026-10-22T17:15Z), the 3.x range still
+has no upper bound; GitHub's advisory unchanged; the lockfile holds only nuxt 4.6.4,
+the patched release. Renewed 30 days, to 2026-12-30.
 """
 
 [[IgnoredVulns]]
 id = "GHSA-f3x9-2chm-73c8"
-ignoreUntil = 2026-11-24T00:00:00Z
+ignoreUntil = 2026-12-30T00:00:00Z
 reason = """
 FALSE POSITIVE in OSV's data, same mechanism as GHSA-vjh5-4x84-xrqp. Nuxt: incomplete fix for GHSA-6gq8-jgmh-3ffp (encoded slash handling).
 GitHub's advisory (which `pnpm audit` reads) bounds the affected 4.x ranges
@@ -104,11 +111,14 @@ Owner: [grundtone]. Added 2026-11-18, approved by Allan in chat 2026-11-18
 Exit: falls away when OSV bounds the 3.x range. Check:
   curl -s https://api.osv.dev/v1/vulns/GHSA-f3x9-2chm-73c8
 The anti-rot check fails the day OSV stops reporting it.
+Re-checked 2026-11-27: OSV record unchanged (modified 2026-11-16T15:15Z), the 3.x range still
+has no upper bound; GitHub's advisory unchanged; the lockfile holds only nuxt 4.6.4,
+the patched release. Renewed 30 days, to 2026-12-30.
 """
 
 [[IgnoredVulns]]
 id = "GHSA-hf59-9xwc-2g4p"
-ignoreUntil = 2026-11-24T00:00:00Z
+ignoreUntil = 2026-12-30T00:00:00Z
 reason = """
 FALSE POSITIVE in OSV's data, same mechanism as GHSA-vjh5-4x84-xrqp. Nuxt: colliding island props can share one /__nuxt_island path.
 GitHub's advisory (which `pnpm audit` reads) bounds the affected 4.x ranges
@@ -121,11 +131,14 @@ Owner: [grundtone]. Added 2026-11-18, approved by Allan in chat 2026-11-18
 Exit: falls away when OSV bounds the 3.x range. Check:
   curl -s https://api.osv.dev/v1/vulns/GHSA-hf59-9xwc-2g4p
 The anti-rot check fails the day OSV stops reporting it.
+Re-checked 2026-11-27: OSV record unchanged (modified 2026-11-16T15:15Z), the 3.x range still
+has no upper bound; GitHub's advisory unchanged; the lockfile holds only nuxt 4.6.4,
+the patched release. Renewed 30 days, to 2026-12-30.
 """
 
 [[IgnoredVulns]]
 id = "GHSA-96x6-fvhx-49hg"
-ignoreUntil = 2026-11-24T00:00:00Z
+ignoreUntil = 2026-12-30T00:00:00Z
 reason = """
 FALSE POSITIVE in OSV's data, same mechanism as GHSA-vjh5-4x84-xrqp. Nuxt: message and data of unhandled errors exposed during server rendering.
 GitHub's advisory (which `pnpm audit` reads) bounds the affected 4.x ranges
@@ -138,4 +151,7 @@ Owner: [grundtone]. Added 2026-11-18, approved by Allan in chat 2026-11-18
 Exit: falls away when OSV bounds the 3.x range. Check:
   curl -s https://api.osv.dev/v1/vulns/GHSA-96x6-fvhx-49hg
 The anti-rot check fails the day OSV stops reporting it.
+Re-checked 2026-11-27: OSV record unchanged (modified 2026-11-16T15:15Z), the 3.x range still
+has no upper bound; GitHub's advisory unchanged; the lockfile holds only nuxt 4.6.4,
+the patched release. Renewed 30 days, to 2026-12-30.
 """

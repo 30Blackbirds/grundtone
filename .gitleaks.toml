@@ -1,22 +1,22 @@
 [extend]
 useDefault = true
 
-# 🔴 Undtagelser er farlige, fordi de er tavse. Derfor: ÉN eksakt vaerdi, ikke
-# en fil og ikke et moenster.
+# Exceptions are dangerous because they are silent, so this is ONE exact value,
+# not a file and not a pattern.
 #
-# `generic-api-key` slaar ud paa SonarQubes projectKey, fordi den indeholder
-# en UUID og dermed har hoej entropi. Nøglen er en OFFENTLIG projekt-adresse
-# paa vores egen Sonar-instans — adgang kraever SONAR_TOKEN, som ligger i
-# GitHub Secrets og aldrig i repoet. En IDENTIFIKATOR er ikke en afsloering;
-# mekanismen er.
+# `generic-api-key` matches the SonarQube projectKey in sonar-project.properties
+# and .sonarlint/connectedMode.json. The key is a public project identifier;
+# access needs SONAR_TOKEN, which lives in GitHub secrets and never in the repo.
 #
-# Foerste udgave brugte `paths = ['sonar-project\.properties']`. Det undtog
-# HELE filen — maalt med en negativ kontrol: en indsat `ghp_…`-token i samme
-# fil blev IKKE fanget. **En undtagelse der er bredere end sin begrundelse,
-# er en slukket scanner med en kommentar ovenover.**
+# A path allowlist would exempt the whole file: a token pasted next to the key
+# would no longer be caught. Binding the exception to the literal value means a
+# key change fails the scan and has to be looked at again.
 #
-# Bundet til den literale vaerdi i stedet: skifter projektet nøgle, fejler
-# scanningen og nogen skal tage stilling igen. Det er med vilje.
+# The second value is the previous key. It is no longer in the tree, but it is
+# in git history, and the CI job scans history.
 [allowlist]
-description = "SonarQube projectKey — offentlig identifikator, ikke en credential"
-regexes = ['''KlangHaus_grundtone_7614edb4-1c54-485f-89b0-0867d3e04552''']
+description = "SonarQube projectKey: a public identifier, not a credential"
+regexes = [
+  '''30blackbirds_grundtone''',
+  '''KlangHaus_grundtone_7614edb4-1c54-485f-89b0-0867d3e04552''',
+]
