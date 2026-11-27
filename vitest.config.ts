@@ -25,6 +25,16 @@ export default defineConfig({
         '**/__tests__/**',
         '**/*.test.*',
       ],
+      // Floor for the whole repo, set about 1.5 points below what develop
+      // measured on 2026-11-26 (statements 71.06, branches 69.62, functions
+      // 78.55, lines 71.48). `pnpm test:coverage` fails below it. Raise it
+      // when coverage rises; do not lower it to make a change pass.
+      thresholds: {
+        statements: 70,
+        branches: 68,
+        functions: 77,
+        lines: 70,
+      },
     },
   },
 });
