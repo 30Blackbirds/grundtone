@@ -43,7 +43,7 @@
     "react-native-worklets": "0.13.1"
   },
   "devDependencies": {
-    "@types/react": "~19.3.0",
+    "@types/react": "~19.3.1",
     "jscodeshift": "^17.4.0",
     "typescript": "~5.9.2"
   }
