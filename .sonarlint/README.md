@@ -1,8 +1,8 @@
 # Connected Mode binding
 
-`connectedMode.json` binds this repo to its project on our self-hosted SonarQube
-(`sonar.klanghaus.dk`), so SonarQube for IDE shows the same findings in the editor that CI reports —
-without every developer configuring it by hand.
+`connectedMode.json` binds this repo to its project on the self-hosted SonarQube
+(`sonar.30blackbirds.com`), so SonarQube for IDE shows the same findings in the editor that CI
+reports — without every developer configuring it by hand.
 
 ## 🔴 The file is not the capability
 
@@ -11,8 +11,8 @@ SonarLint), and measured 2026-09-19 on this machine that extension was installed
 three editors present (VS Code: 63 extensions, Cursor: 6, Kiro: 2 — zero Sonar in each). So:
 
 1. install **SonarQube for IDE** in your editor;
-2. sign in to `sonar.klanghaus.dk` with your own credentials — this file deliberately carries **no
-   token**, only the server URI and the project key, which is why it is safe to commit;
+2. sign in to `sonar.30blackbirds.com` with your own credentials — this file deliberately carries
+   **no token**, only the server URI and the project key, which is why it is safe to commit;
 3. reopen the repo; the extension offers to use this configuration.
 
 Until step 1 happens, CI analyses and the editor stays blind — which was the whole point of riff
