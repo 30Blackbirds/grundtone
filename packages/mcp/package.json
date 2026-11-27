@@ -9,6 +9,9 @@
     "directory": "packages/mcp"
   },
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "bin": {
     "grundtone-mcp": "dist/index.js"
