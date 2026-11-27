@@ -26,6 +26,13 @@ function propertyKey(properties) {
   return line?.slice('sonar.projectKey='.length).trim();
 }
 
+/** True when the key ends in `_<uuid>` (8-4-4-4-12 hex). */
+function hasUuidSuffix(key) {
+  return /_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+    key,
+  );
+}
+
 describe('the SonarQube for IDE binding', () => {
   it('names the same project as sonar-project.properties', () => {
     const binding = JSON.parse(read('.sonarlint/connectedMode.json'));
@@ -44,7 +51,23 @@ describe('the SonarQube for IDE binding', () => {
 
   it('points at our self-hosted server over https', () => {
     const binding = JSON.parse(read('.sonarlint/connectedMode.json'));
-    expect(binding.sonarQubeUri).toBe('https://sonar.klanghaus.dk');
+    expect(binding.sonarQubeUri).toBe('https://sonar.30blackbirds.com');
+  });
+
+  // The key is `<org>_<repo>`. A UUID-shaped suffix is what the Sonar UI
+  // generates by default; it is not allowed here.
+  it('uses the key 30blackbirds_grundtone, with no UUID-shaped suffix', () => {
+    const key = propertyKey(read('sonar-project.properties'));
+    expect(key).toBe('30blackbirds_grundtone');
+    expect(hasUuidSuffix(key)).toBe(false);
+  });
+
+  // Negative control for the check above, so it cannot pass on a bug in it.
+  it('detects a UUID-shaped suffix', () => {
+    expect(
+      hasUuidSuffix('Org_grundtone_7614edb4-1c54-485f-89b0-0867d3e04552'),
+    ).toBe(true);
+    expect(hasUuidSuffix('30blackbirds_grundtone')).toBe(false);
   });
 
   // 🔴 The binding is committed, so it must never carry a credential. Each
