@@ -1,5 +1,14 @@
 # @grundtone/mcp
 
+## 0.2.6 - 2026-11-27
+
+### Patch Changes
+
+- [#354](https://github.com/30Blackbirds/grundtone/pull/354)
+  [`82b8601`](https://github.com/30Blackbirds/grundtone/commit/82b860153b6ab6f8b2e08fe589d0f8df9eb942c5)
+  Thanks [@allanasp](https://github.com/allanasp)! - Point the repository URLs and the licence
+  copyright line at the new project name.
+
 ## 0.2.5 - 2026-11-07
 
 ### Patch Changes
