@@ -121,7 +121,7 @@ Changelogs are created in each package's `CHANGELOG.md` file when running `pnpm 
 - **@grundtone/utils** - Utilities, formatters, validation (depends on core)
 - **@grundtone/design-system** - SCSS functions, mixins, CSS utilities, grid system (web only)
 - **@grundtone/vue** - Vue 3 components + composables using atomic design (depends on core, utils)
-- **@grundtone/nuxt** - Nuxt 3 module (depends on vue)
+- **@grundtone/nuxt** - Nuxt module, built and tested against Nuxt 4 (depends on vue)
 - **@grundtone/react-native** - React Native theme provider (depends on core)
 
 ### Build Pipeline (Turborepo)
@@ -234,8 +234,11 @@ ComponentName/
 ├── ComponentName.scss       # Styles (if needed)
 ├── types.ts                # TypeScript interfaces
 ├── index.ts                # Named exports
-└── README.md               # Component documentation
+└── demo.vue                # Example used by the docs site (optional)
 ```
+
+Component documentation lives on the docs site, in `apps/docs/vue/`, not in a README per component
+folder.
 
 **Code Quality Standards**
 
@@ -247,7 +250,8 @@ ComponentName/
 - Props must be typed with interfaces, never `any` types
 - Use descriptive, intention-revealing names for variables and functions
 - Functions should be pure when possible, avoid side effects
-- Maximum component complexity: 150 lines of code (template + script + style)
+- Aim for components under about 150 lines (template + script + style); split larger ones when you
+  touch them. This is a guideline, not enforced by tooling.
 
 ### Testing Requirements
 
@@ -279,7 +283,8 @@ describe('ComponentName', () => {
 
 **Test Coverage Requirements**
 
-- Minimum 90% test coverage for all packages
+- Coverage must not fall below the repo-wide floor in `vitest.config.ts` (`coverage.thresholds`);
+  `pnpm test:coverage` fails below it. New code should be covered well above the floor.
 - Every prop combination must be tested
 - All user interactions must be tested
 - Error states and edge cases must be tested
@@ -287,7 +292,7 @@ describe('ComponentName', () => {
 
 ### Documentation Requirements
 
-**Component Documentation (MANDATORY README.md for each component)**
+**Component Documentation (a page in `apps/docs/vue/` for each component)**
 
 ```markdown
 # ComponentName
@@ -381,9 +386,10 @@ export function isValidCPR(cpr: string): boolean {
   - Required format: `type(scope): description`
   - Valid types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`,
     `revert`
-  - Valid scopes: `vue`, `core`, `utils`, `design-system`, `nuxt`, `react-native`, `deps`, `config`,
-    `ci`, `docs`, `release`
-  - Example: `feat(ui): add new button variant`
+  - Valid scopes (from `commitlint.config.js`): `vue`, `core`, `utils`, `icons`, `design-system`,
+    `react-native`, `nuxt`, `email`, `mcp`, `web`, `deps`, `deps-dev`, `config`, `ci`, `docs`,
+    `release`. A scope is required.
+  - Example: `feat(vue): add new button variant`
 
 **Pre-commit Hooks (AUTOMATIC)**
 
@@ -398,7 +404,7 @@ export function isValidCPR(cpr: string): boolean {
 - **TEMPLATES/ directory**: Completely ignored by all linting, formatting, and git hooks
 - **Linting scope**: Only `{packages,apps}/` directories are processed
 - **Module system**: Project uses ES modules (`"type": "module"` in package.json)
-- **Node.js compatibility**: Minimum version 20.0.0 required
+- **Node.js compatibility**: Node.js 24.15.0 or newer (`engines` in package.json, `.nvmrc`)
 
 **Development Workflow Standards**
 
@@ -416,8 +422,8 @@ export function isValidCPR(cpr: string): boolean {
    ```
 
 3. **Quality enforcement**:
-   - Pre-commit hooks ensure all tests pass
-   - CI fails if test coverage drops below 90%
+   - The pre-push hook runs the tests related to your changes and the per-package typecheck
+   - CI fails if test coverage drops below the floor in `vitest.config.ts`
    - Linting rules enforce clean code standards
    - Documentation must be kept up to date
    - TypeScript strict mode catches type issues

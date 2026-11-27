@@ -3,7 +3,7 @@
 # Grundtone
 
 **Open source design tokens for multi-brand theming — update once, apply everywhere.**\
-A self-hosted design system for Vue 3, Nuxt 3 and React Native.
+A self-hosted design system for Vue 3, Nuxt and React Native.
 
 [![CI](https://github.com/30Blackbirds/grundtone/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/30Blackbirds/grundtone/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/v/@grundtone/vue?label=%40grundtone%2Fvue)](https://www.npmjs.com/package/@grundtone/vue)
@@ -24,7 +24,7 @@ A self-hosted design system for Vue 3, Nuxt 3 and React Native.
   light and dark modes.
 - **Vue 3 components** — accessible atoms and molecules (`GTButton`, inputs, selects, tooltips, …)
   plus composables such as `useTheme`.
-- **Nuxt 3 module** — components and composables are auto-imported.
+- **Nuxt module** — components and composables are auto-imported. Built and tested against Nuxt 4.
 - **React Native** — a theme provider and hooks built on the same `@grundtone/core` themes.
 - **SCSS and CSS layer** — token functions, mixins and utilities for any web framework, or plain
   HTML.
@@ -108,7 +108,7 @@ import '@grundtone/vue/css';
 </template>
 ```
 
-### Nuxt 3
+### Nuxt
 
 ```bash
 npm install -D @grundtone/nuxt
@@ -210,7 +210,7 @@ All packages are published to npm under the `@grundtone` scope.
 | [`@grundtone/utils`](./packages/utils)                 | Validation, formatting, ID generation                          |
 | [`@grundtone/icons`](./packages/icons)                 | SVG icon registry (auto-generated)                             |
 | [`@grundtone/vue`](./packages/vue)                     | Vue 3 component library and composables                        |
-| [`@grundtone/nuxt`](./packages/nuxt)                   | Nuxt 3 module with auto-imports                                |
+| [`@grundtone/nuxt`](./packages/nuxt)                   | Nuxt module with auto-imports                                  |
 | [`@grundtone/react-native`](./packages/react-native)   | React Native theme provider and hooks                          |
 | [`@grundtone/mcp`](./packages/mcp)                     | MCP server exposing components and tokens to AI tools          |
 | [`@grundtone/email`](./packages/email)                 | Token-themed email building blocks, compiled to inlined HTML   |
@@ -230,7 +230,7 @@ design tokens for native code. It is not published to crates.io.
 | ---------------------------------------------------------- | ----------------------------------------- |
 | [`apps/docs`](./apps/docs)                                 | VitePress documentation site              |
 | [`apps/playground/vue`](./apps/playground/vue)             | Vue 3 playground (blog, shop, components) |
-| [`apps/playground/nuxt`](./apps/playground/nuxt)           | Nuxt 3 playground                         |
+| [`apps/playground/nuxt`](./apps/playground/nuxt)           | Nuxt playground                           |
 | [`apps/playground/html-test`](./apps/playground/html-test) | Plain HTML playground (no framework)      |
 | [`apps/playground/expo`](./apps/playground/expo)           | React Native / Expo playground            |
 
@@ -243,7 +243,7 @@ core                 Theme types, createTheme(), presets
  ├── icons           SVG icon registry
  ├── react-native    RN theme provider & hooks
  ├── vue             Vue 3 components & composables
- └── nuxt            Nuxt 3 module (auto-imports vue + composables)
+ └── nuxt            Nuxt module (auto-imports vue + composables)
 ```
 
 More detail in [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md).
