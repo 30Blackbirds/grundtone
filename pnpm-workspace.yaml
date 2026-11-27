@@ -176,8 +176,8 @@ auditConfig:
     # osv-scanner.toml. A count written here went stale (it said six while the
     # list held five), and prose that contradicts the gate invites "fixing" the
     # gate instead. Each id has its own reason below:
-    # - image-size: unfixable for us, and it comes in only
-    #   through apps/playground/* (demo apps, not published packages).
+    # - image-size: no fix on the 1.x line the lockfile holds, and it comes in
+    #   only through apps/playground/* (demo apps, not published packages).
     #   `pnpm audit --prod` scans the whole workspace's prod closure, playground
     #   apps included, which is why they count.
     # - GHSA-vjh5 (nuxt): a false positive in OSV's data, listed only because
@@ -192,29 +192,27 @@ auditConfig:
     # GHSA-vfj7-8cjw-p6xm stood here until GitHub withdrew it on 2026-10-23.
     # happy-dom GHSA-834v stood here until @tiptap/html 3.32.2 allowed happy-dom
     # ^21.0.4; packages/vue now declares it.)
-    # GHSA-5p2g-fcmc-qvqq · GHSA-w3rx-r6r6-pgpr — image-size DoS i ICNS- og
-    # JXL/HEIF-parserne. **Der findes INGEN patch**: advisory'et angiver
-    # `Patched versions <0.0.0`, og npms nyeste (2.0.2) er selv saarbar. En
-    # override er derfor ikke mulig — det er ikke et valg mellem fix og accept.
+    # GHSA-5p2g-fcmc-qvqq · GHSA-w3rx-r6r6-pgpr — image-size DoS in the ICNS
+    # and JXL/HEIF parsers. A fix exists in the 2.x line (>= 2.0.3). The
+    # lockfile holds image-size 1.2.1, and the 1.x line will not be patched.
+    # Moving it to 2.x is a major-version change with API changes for its
+    # consumer, so it is not done as an override here.
     #
-    # Naabarhed: udelukkende via apps/playground/expo -> expo -> @expo/metro
-    # -> metro. Et PLAYGROUND, der aldrig shippes, og som parser billeder, vi
-    # selv laegger ind.
+    # Reachability: only through apps/playground/expo -> expo -> @expo/metro
+    # -> metro. A playground that is never shipped and only parses images that
+    # are committed to this repository.
     #
-    # 🔴 EXIT: falder bort naar (a) image-size udgiver en patch, ELLER
-    # (b) expo-playgroundet fjernes. (b) er sandsynlig — produkt-taksonomien
-    # siger NativeScript, ikke Expo.
+    # 🔴 EXIT: falls away when (a) metro moves to image-size >= 2.0.3 (or 1.x
+    # gets a patch), OR (b) the expo playground is removed.
     #
-    # 🔴 DEADLINE: 2026-11-24T00:00:00Z. Den STAAR i `osv-scanner.toml`
-    # (`ignoreUntil` paa begge GHSA'er) og haandhaeves af
-    # `.github/scripts/assert-osv-ignores-expire.py` som eget job, and osv-scanner
-    # enforces it too (measured 2026-10-22, see osv-scanner.toml's header).
-    # `scripts/assert-vuln-accepts-in-sync.mjs` binder
-    # de to lister, saa den dag deadlinen falder, faelder CI accepten HER ogsaa.
-    # Den tidligere formulering ("genvurdér paa haendelsen, ikke paa en dato")
-    # laeste som en accept UDEN udloeb (riff v8e8x8in/KH-937); maalt er det
-    # forkert — der er en tvungen genvurdering, den bor bare i den anden fil.
-    # Aendrer du datoen, skal den aendres BEGGE steder.
+    # 🔴 DEADLINE: 2026-12-30T00:00:00Z. It is set in `osv-scanner.toml`
+    # (`ignoreUntil` on both GHSAs) and enforced by
+    # `.github/scripts/assert-osv-ignores-expire.py` as its own job, and
+    # osv-scanner enforces it too (measured 2026-10-22, see osv-scanner.toml's
+    # header). `scripts/assert-vuln-accepts-in-sync.mjs` binds the two lists, so
+    # when the deadline passes, CI fails the accept HERE as well. This list has
+    # no expiry of its own; the forced re-check lives in the other file.
+    # If you change the date, change it in BOTH places.
     - GHSA-5p2g-fcmc-qvqq
     - GHSA-w3rx-r6r6-pgpr
     # GHSA-vjh5-4x84-xrqp — a FALSE POSITIVE in OSV's data on nuxt /
